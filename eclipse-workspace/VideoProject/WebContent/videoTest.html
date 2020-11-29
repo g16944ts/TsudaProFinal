@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tsuda Project</title>
+<link rel="stylesheet" href="tsudaPro.css">
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="videoControl.js"></script>
+<script src="VideoIndexerAPI.js"></script>
+<video id="video" controls width="640">
+  <source src="DevilWearPrada.mp4" type="video/mp4">
+  <track src="DevilWearPradacopy.vtt" label="English" kind="subtitles" srclang="en" default>
+</video>
+
+<br>
+<button type="button" onClick="videoPlay(0)">再生</button>
+<button type="button" onClick="videoPlay(1)">一時停止</button>
+<br>
+<button type="button" onClick="upVolume()">音量上げる</button>
+<button type="button" onClick="downVolume()">音量下げる</button>
+<br>
+<button type="button" onClick="videoSpeed(0)">速くする</button>
+<button type="button" onClick="videoSpeed(1)">元の速さ</button>
+<button type="button" onClick="videoSpeed(2)">遅くする</button>
+
+<br>
+この人になりきる！
+<br>
+<img src="./faces/AnnHathaway.jpg" class="button" onclick="goClick(0)" width="150" height="217" alt="Ann Hathaway">
+<img src="./faces/Emily.jpg" class="button" onclick="goClick(1)" width="150" height="217" alt="Emily">
+<img src="./faces/Giselle.jpg" class="button" onclick="goClick(2)" width="150" height="217" alt="Giselle">
+<img src="./faces/Tuicci.jpg" class="button" onclick="goClick(3)" width="150" height="217" alt="Tuicci">
+<img src="./faces/Unknown1.jpg" class="button" onclick="goClick(4)" width="150" height="217" alt="Unknown1">
+
+<!-- <button type="button" id="apiButton">API</button> -->
+
+<script type="text/javascript">
+    $(function() {
+        var params = {
+            // Request parameters
+            "allowEdit": True,
+        };
+      
+        $.ajax({
+            url: "https://api.videoindexer.ai/Auth/trial/Accounts/59969001-ccc4-44a1-a7fb-43e88f021215/Videos/4b6c0048a4/AccessToken?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("x-ms-client-request-id","055580a9bf564933b817e0df14028904");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d4cf76ac9e934f2bbb4c9c3de2ee434d");
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+</script>
+
+<script src="videoControl.js"></script>
+<script src="VideoIndexerAPI.js"></script>
+</body>
+</html>
