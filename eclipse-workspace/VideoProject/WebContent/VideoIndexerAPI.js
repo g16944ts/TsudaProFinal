@@ -21,29 +21,3 @@ function getVideoAccessToken(){
   .ajax()
 }
 */
-
-
-$('#apiButton').click(function() {
-        var params = {
-            // Request parameters
-            "allowEdit": True,
-        };
-      
-        $.ajax({
-            url: api_url + "Auth/" + location + "/Accounts/" + accountID + "/Videos/4b6c0048a4/AccessToken?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("x-ms-client-request-id",VideoIndexerSK);
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",AzureSK);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(data) {
-            alert("success");
-        })
-        .fail(function() {
-            alert("error");
-        });
-    });
