@@ -54,10 +54,12 @@ function getVideoIndex(videoAT){
 		type: "GET",
         // Request body
         data: "{body}",
+		dataType: 'json',
+		contentType: "application/json; charset=utf-8",
 	})
 	.done(function(data) {
-            //$('#p1').text(data[0].faces);
-			alert(data);
+		var face = data.summarizedInsights.faces;
+            $('#p1').text(JSON.stringify(face));//参照の仕方を確認
         })
         .fail(function() {
             alert("error");
