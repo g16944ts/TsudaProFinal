@@ -53,11 +53,11 @@ function goClick(num) {
 		case 0: // Ann Hathaway
 			faceID = 2528;
 			break;
-		case 1: // Giselle
-			faceID = 2120;
-			break;
-		case 2: // Emily
+		case 1: // Emily
 			faceID = 2445;
+			break;
+		case 2: // Giselle
+			faceID = 2120;
 			break;
 		case 3: // Tuicci
 			faceID = 1666;
@@ -66,5 +66,6 @@ function goClick(num) {
 			faceID = 1307;
 			break;
 	}
-	alert(faceID);
+	getVideoAT(faceID);
 }
+

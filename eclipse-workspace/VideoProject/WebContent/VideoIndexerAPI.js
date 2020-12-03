@@ -7,13 +7,7 @@ const VideoIndexerSK = "055580a9bf564933b817e0df14028904"; //For Video Indexer P
 const accountID = "59969001-ccc4-44a1-a7fb-43e88f021215";  // For Video Indexer API
 */
 
-	$('#apiButton').click(function(){
-		
-        getVideoAT();
-    });
-
-
-function getVideoAT(){
+function getVideoAT(faceID){
 	
 	var params = {
 		"allowEdit" : true,
@@ -31,14 +25,13 @@ function getVideoAT(){
             data: "{body}",
 		})
 		.done(function(data) {
-			//$('#p1').text(data);
-			getVideoIndex(data);
+			getVideoIndex(data, faceID);
         }).fail(function() {
             alert("error");
         });		
 }
 
-function getVideoIndex(videoAT){
+function getVideoIndex(videoAT, faceID){
 	
 	var params = {
 		"accessToken" : videoAT,
@@ -58,10 +51,31 @@ function getVideoIndex(videoAT){
 		contentType: "application/json; charset=utf-8",
 	})
 	.done(function(data) {
-		var face = data.summarizedInsights.faces;
-            $('#p1').text(JSON.stringify(face));//参照の仕方を確認
+		getFaceDuration(data, faceID);
         })
         .fail(function() {
             alert("error");
         });
+}
+
+function getFaceDuration(data, faceID){
+		var trimData = data.videos[0].insights;
+		var faceData = trimData.faces;
+		var len = Object.keys(trimData['faces']).length; 
+		$('#p1').text(JSON.stringify(len));
+		var video = $('#video').get(0);
+ 		
+		for(var i=0; i<len; i++){
+			
+			if(faceData[i].id == faceID){
+				
+				var faceAppearance = faceData[i].instances;
+				$('#p1').text(JSON.stringify(faceAppearance));
+				//var l = Object.keys(faceData['appearances'].length);
+				//for(var j=0; j++; j<l){
+					//$('#p1').text(JSON.stringify(faceData[i].appearances[j]));
+				//}
+			}
+		} 
+		//$('#p1').text(JSON.stringify(faceData));
 }
