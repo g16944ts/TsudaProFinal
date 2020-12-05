@@ -59,23 +59,62 @@ function getVideoIndex(videoAT, faceID){
 }
 
 function getFaceDuration(data, faceID){
-		var trimData = data.videos[0].insights;
-		var faceData = trimData.faces;
+		var trimData = data.videos[0].insights; //insights全体
+		var faceData = trimData.faces; //insightsの中のfaces
 		var len = Object.keys(trimData['faces']).length; 
-		$('#p1').text(JSON.stringify(len));
-		var video = $('#video').get(0);
- 		
+	
+		$('#p1').text("");
+		
 		for(var i=0; i<len; i++){
 			
 			if(faceData[i].id == faceID){
 				
-				var faceAppearance = faceData[i].instances;
-				$('#p1').text(JSON.stringify(faceAppearance));
-				//var l = Object.keys(faceData['appearances'].length);
-				//for(var j=0; j++; j<l){
-					//$('#p1').text(JSON.stringify(faceData[i].appearances[j]));
-				//}
+				var faceAppearance = faceData[i].instances; //insightsの中のfacesの中のinstances(顔が出てくる秒数がわかる)
 			}
-		} 
-		//$('#p1').text(JSON.stringify(faceData));
+		}
+		
+		var l = faceAppearance.length;
+		var startArray = [];
+		var endArray = [];
+		for(var j=0; j<l; j++){
+			
+			var startTime = faceAppearance[j].start;
+			var endTime = faceAppearance[j].end;
+			
+			var start = startTime.split(':').reverse().reduce((prev,cur,idx) => prev + cur * Math.pow(60,idx),0).toFixed(4);
+			var end = endTime.split(':').reverse().reduce((prev,cur,idx) => prev + cur * Math.pow(60,idx),0).toFixed(4);
+			startArray.push(start);
+			endArray.push(end);
+		}
+		
+		//$('#p1').text(startArray[0]);
+		timeEvent(startArray,endArray);
+}
+
+function timeEvent(startArray, endArray){
+	var v = $('#video').get(0);
+	v.currentTime = 0;
+	var l = startArray.length;
+	
+	v.play();
+	for(var i=0; i<l; i++){
+
+	v.addEventListener('timeupdate', {starttime: startArray[i], endtime: endArray[i], handleEvent: timer});
+	//v.addEventListener('timeupdate', {endtime: endArray[i], handleEvent: timer});
+	}
+	
+}
+
+function timer(e){
+	var v = $('#video').get(0);
+
+	if(Math.abs(this.starttime - v.currentTime.toFixed(4)).toFixed(3)<0.25){
+		v.muted = true;
+		
+		return;
+	} else if(Math.abs(this.endtime - v.currentTime.toFixed(4)).toFixed(3)<0.25){
+		v.muted = false;
+		return;
+	}
+	
 }
