@@ -110,10 +110,11 @@ function timer(e){
 
 	if(Math.abs(this.starttime - v.currentTime.toFixed(4)).toFixed(3)<0.25){
 		v.muted = true;
-		
+		$('#div5').css("visibility","visible");
 		return;
 	} else if(Math.abs(this.endtime - v.currentTime.toFixed(4)).toFixed(3)<0.25){
 		v.muted = false;
+		$('#div5').css('visibility','hidden');
 		return;
 	}
 	

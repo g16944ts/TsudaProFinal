@@ -2,10 +2,9 @@
 
 var v = document.getElementById("video"); // media
 
-// Play and Stop the video
-function videoPlay(num){
-		var n = parseInt(num);
-		  if ( n == 0 )
+// Play and Pause the video
+function videoPlay(){
+		  if ( v.paused )
 		  {
 		    v.play();
 		  }
@@ -33,7 +32,7 @@ function videoSpeed(num){
 		} else if( n == 1 ){
 			v.playbackRate = 1.0;
 		} else {
-			v.playbackRate = 1.7;
+			v.playbackRate = 1.5;
 		}
 }
 
@@ -69,3 +68,6 @@ function goClick(num) {
 	getVideoAT(faceID);
 }
 
+function firstPlay(){
+	v.play();
+}

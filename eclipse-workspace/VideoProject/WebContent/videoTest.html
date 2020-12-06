@@ -4,26 +4,44 @@
 <meta charset="UTF-8">
 <title>Tsuda Project</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="tsudaPro.css">
 </head>
 <body>
+
+<div id="div1">
 <video id="video" controls width="640">
   <source src="DevilWearPrada.mp4" type="video/mp4">
   <track src="DevilWearPradacopy.vtt" label="English" kind="subtitles" srclang="en" default>
 </video>
 
-<br>
-<button type="button" onClick="videoPlay(0)">再生</button>
-<button type="button" onClick="videoPlay(1)">一時停止</button>
-<br>
-<button type="button" onClick="upVolume()">音量上げる</button>
-<button type="button" onClick="downVolume()">音量下げる</button>
-<br>
-<button type="button" onClick="videoSpeed(0)">速くする</button>
-<button type="button" onClick="videoSpeed(1)">元の速さ</button>
-<button type="button" onClick="videoSpeed(2)">遅くする</button>
+<div id="div5">
+<i class="fa fa-volume-up" aria-hidden="true"></i>
+</div>
 
+<div id="div2">
+<button type="button" class="button1" onClick="videoPlay()"><i class="fa fa-play" aria-hidden="true"></i> / <i class="fa fa-pause" aria-hidden="true"></i></button>
 <br>
+<br>
+<button type="button" class="button1" onClick="upVolume()">音量 <i class="fa fa-plus" aria-hidden="true"></i></button>
+<br>
+<button type="button" class="button1" onClick="downVolume()">音量 <i class="fa fa-minus" aria-hidden="true"></i></button>
+<br>
+<br>
+<button type="button" class="button1" onClick="videoSpeed(0)">1.5倍速 <i class="fa fa-forward" aria-hidden="true"></i></button>
+<br>
+<button type="button" class="button1" onClick="videoSpeed(1)">元の速さ</button>
+<br>
+<button type="button" class="button1" onClick="videoSpeed(2)">0.7倍速 <i class="fa fa-backward" aria-hidden="true"></i></button>
+</div>
+</div>
+
+<div id="div3">
+①お手本<br>
+<button type="button" class="button1" onClick="firstPlay()">お手本</button><br><br>
+②音声OFF<br>
+<br>
+<div id="div4">
 この人になりきる！
 <br>
 <img src="./faces/AnnHathaway.jpg" class="button" onclick="goClick(0)" width="150" height="217" alt="Ann Hathaway" id="">
@@ -31,9 +49,8 @@
 <img src="./faces/Giselle.jpg" class="button" onclick="goClick(2)" width="150" height="217" alt="Giselle" id="">
 <img src="./faces/Tuicci.jpg" class="button" onclick="goClick(3)" width="150" height="217" alt="Tuicci" id="">
 <img src="./faces/Unknown1.jpg" class="button" onclick="goClick(4)" width="150" height="217" alt="Unknown1" id="">
-<br>
-<br>
-<p id="p1"></p>
+</div>
+</div>
 
 <script type="text/javascript" src="VideoIndexerAPI.js"></script>
 <script src="videoControl.js"></script>

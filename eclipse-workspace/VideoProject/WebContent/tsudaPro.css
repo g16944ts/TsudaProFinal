@@ -14,3 +14,40 @@
   height: 120px;
   object-fit: cover;
 }
+
+#div1{
+  position: relative;
+}
+
+#div2{
+  position: absolute;
+  left: 650px;
+  bottom: 13px;
+}
+
+#div3{
+  position: relative;
+  top: 10px;
+}
+
+#div4{
+  position: absolute;
+  left: 120px;
+  top: 1px;
+}
+
+#div5{
+  font-size: 2.5rem;
+  
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: white;
+  visibility: hidden;
+}
+
+.button1{
+	width: 100px;
+	height: 50px;
+	font-size:15px;
+}
