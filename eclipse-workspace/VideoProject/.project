@@ -23,6 +23,21 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>WebContent/Alladin.jpg</name>
+			<type>1</type>
+			<location>/Users/saetani/Downloads/Alladin_SampleThumbnail/Alladin.jpg</location>
+		</link>
+		<link>
+			<name>WebContent/Alladin.mp4</name>
+			<type>1</type>
+			<location>/Users/saetani/Alladin.mp4</location>
+		</link>
+		<link>
+			<name>WebContent/Alladin.vtt</name>
+			<type>1</type>
+			<location>/Users/saetani/Downloads/Alladin.vtt</location>
+		</link>
+		<link>
 			<name>WebContent/DevilWearPrada.mp4</name>
 			<type>1</type>
 			<location>/Users/saetani/TsudaProject/DevilWearPrada.mp4</location>
@@ -31,6 +46,11 @@
 			<name>WebContent/DevilWearPradacopy.vtt</name>
 			<type>1</type>
 			<location>/Users/saetani/TsudaProject/DevilWearPradacopy.vtt</location>
+		</link>
+		<link>
+			<name>WebContent/Naomi.jpg</name>
+			<type>1</type>
+			<location>/Users/saetani/Downloads/Alladin_SampleThumbnail/Naomi.jpg</location>
 		</link>
 		<link>
 			<name>WebContent/faces</name>

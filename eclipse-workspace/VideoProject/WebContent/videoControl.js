@@ -63,9 +63,24 @@ function goClick(num) {
 			break;
 		case 4: // Unknown1
 			faceID = 1307;
-			break;
+			break;	
 	}
 	getVideoAT(faceID);
+}
+
+function goClickAlladin(num) {
+	var n = parseInt(num);
+	var faceID;
+	
+	switch (n){
+		case 0: // NaomiScott
+			faceID = 1093;
+			break;
+		case 1: // Emily
+			faceID = 2224;
+			break;	
+	}
+	getAlladinVideoAT(faceID);
 }
 
 function firstPlay(){
